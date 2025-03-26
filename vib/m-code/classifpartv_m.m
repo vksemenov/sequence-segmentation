@@ -48,7 +48,7 @@ classifier_name = {'Naive Bayes','Discriminant Analysis','Classification Tree','
 
 
 res = classification_fun(X,y,1);
-fprintf(fileID,'NB %f %f %f %f %f %d ', res  ); disp(res);
+fprintf(fileID,'\nNB %f %f %f %f %f %d ', res  ); disp(res);
 res = classification_fun(X,y,2);
 fprintf(fileID,'DiSkr %f %f %f %f %f %d ', res  );disp(res);
 res = classification_fun(X,y,3);
