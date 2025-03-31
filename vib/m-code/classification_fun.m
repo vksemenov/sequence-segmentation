@@ -42,7 +42,7 @@ end
 
 isLabels1 = resubPredict(Mdl1);                     % построение матрицы результатов    
 
-ConfusionMat1 = confusionchart(y,categorical(isLabels1));
+%ConfusionMat1 = confusionchart(y,categorical(isLabels1));
 %----------------------
 [mat,~] = confusionmat(y,categorical(isLabels1));
 len=size(mat,1);

@@ -1,5 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  ver 1.0  15.03.2025  ISL
+%  ver 1.1  27.03.2025  ISL добавлена CNN
 %  Вычисление значений классификаторов на информационной последовательности
 %  Прогон всех файлов разрезанной выборки через классификаторы
 %  Вход : информация по выборке через config файл D:\vib\Calc\conf_temp1_.txt
@@ -48,7 +49,7 @@ classifier_name = {'Naive Bayes','Discriminant Analysis','Classification Tree','
 
 
 res = classification_fun(X,y,1);
-fprintf(fileID,'\nNB %f %f %f %f %f %d ', res  ); disp(res);
+fprintf(fileID,'NB %f %f %f %f %f %d ', res  ); disp(res);
 res = classification_fun(X,y,2);
 fprintf(fileID,'DiSkr %f %f %f %f %f %d ', res  );disp(res);
 res = classification_fun(X,y,3);
@@ -59,6 +60,16 @@ res = classification_fun(X,y,5);
 fprintf(fileID,'SVM %f %f %f %f %f %d ', res  );disp(res);
 res = classification_fun(X,y,6);
 fprintf(fileID,'ENS %f %f %f %f %f %d ', res  );disp(res);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+y = A(:,gr);                  % обработка меток
+y = [y ~y]                              % !! 0 1 бинарные классы 
+                                        % обработка меток в НС количество меток=количесту классов
+                                        % метки не категорируются
+
+res = classification_simple_CNN_fun( X,y);
+fprintf(fileID,'CNN %f %f %f %f %f %d ', res  );disp(res);
+
 
 end
 fclose(fileID);
